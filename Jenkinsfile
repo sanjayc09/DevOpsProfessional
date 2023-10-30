@@ -18,7 +18,7 @@ pipeline{
              sh "docker build -t sanjayc09/2824"
 		}
 		}
-		stage('Login to Docker Hub') 
+		stage('Login') 
 			{         
 			steps{                            
 				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | sudo docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'                 
@@ -26,7 +26,7 @@ pipeline{
 				}           
 			} 
 		
-	 stage('Deploy our image') 
+	 stage('Push') 
 	   { 
             steps 
 			{ 
@@ -41,4 +41,9 @@ pipeline{
           }
         }
     }
+post {
+	always{
+		sh 'docker logout'
+	}
+}
 }
