@@ -17,7 +17,7 @@ spec:
   spec:
    containers:
    - name: apache2
-     image: pav537/2824
+     image: sanjayc09/2824
      ports:
      - containerPort: 80
 ---
